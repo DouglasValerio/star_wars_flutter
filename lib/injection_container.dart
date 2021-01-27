@@ -4,12 +4,14 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
 import 'core/network/network_info.dart';
+import 'dependency_injections/category_page_injection.dart';
 import 'dependency_injections/homepage_injection.dart';
 
 final serviceLocator = GetIt.instance;
 Future<void> init() async {
   //Features layer
   await homepageInjection();
+  await categoriesPageInjection();
 
   //Core layer
   serviceLocator.registerLazySingleton<NetworkInfo>(

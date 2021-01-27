@@ -7,10 +7,10 @@ abstract class UseCase<Type, Params> {
   Either<Failure, Type> call(Params params);
 }
 
-class IntParams {
-  final int number;
+class StrParams {
+  final String string;
 
-  IntParams({@required this.number});
+  StrParams({@required this.string});
 }
 
 class NoParams {}

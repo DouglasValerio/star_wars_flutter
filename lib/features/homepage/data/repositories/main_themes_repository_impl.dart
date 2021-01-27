@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/failures.dart';
 import '../../domain/entities/main_themes.dart';
 import '../../domain/repositories/main_themes_repository.dart';
@@ -17,7 +16,7 @@ class MainThemesRepositoryImpl implements MainThemesRepository {
           await remoteDataSource.getMainThemesList();
 
       return Right(availableOrdersFromDatabase);
-    } on ApiException {
+    } on Exception {
       return Left(ApiFailure());
     }
   }

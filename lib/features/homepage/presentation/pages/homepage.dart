@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:star_wars_flutter/features/homepage/presentation/bloc/main_theme_bloc.dart';
-import 'package:star_wars_flutter/features/homepage/presentation/widgets/list_main_themes.dart';
-import 'package:star_wars_flutter/injection_container.dart';
+import '../../../../injection_container.dart';
+
+import '../bloc/main_theme_bloc.dart';
+import '../widgets/list_main_themes.dart';
 
 class Homepage extends StatefulWidget {
   @override

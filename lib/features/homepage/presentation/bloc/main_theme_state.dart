@@ -17,4 +17,10 @@ class LoadedStateMainTheme extends MainThemeState {
   const LoadedStateMainTheme({this.mainThemeList});
 }
 
+class LoadedCategories extends MainThemeState {
+  final List<MainThemesItem> categoriesList;
+
+  const LoadedCategories({this.categoriesList});
+}
+
 class ErrorState extends MainThemeState {}

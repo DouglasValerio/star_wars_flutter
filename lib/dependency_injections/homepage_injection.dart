@@ -8,7 +8,9 @@ import '../injection_container.dart';
 Future<void> homepageInjection() async {
   //Features layer
   serviceLocator.registerFactory(
-    () => MainThemeBloc(getMainThemesList: serviceLocator()),
+    () => MainThemeBloc(
+        getMainThemesList: serviceLocator(),
+        getMainThemesItemList: serviceLocator()),
   );
   serviceLocator.registerLazySingleton(
     () => GetMainThemesList(serviceLocator()),

@@ -3,9 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:star_wars_flutter/features/categories_itens_page/domain/entities/main_themes_item.dart';
+import 'package:star_wars_flutter/features/categories_itens_page/domain/usecases/get_main_themes_item_list.dart';
+
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
-
 import '../../domain/entities/main_themes.dart';
 import '../../domain/usecases/get_main_themes_list.dart';
 
@@ -14,15 +17,31 @@ part 'main_theme_state.dart';
 
 class MainThemeBloc extends Bloc<MainThemeEvent, MainThemeState> {
   final GetMainThemesList getMainThemesList;
-  MainThemeBloc({this.getMainThemesList}) : super(EmptyMainTheme());
+  final GetMainThemesItemList getMainThemesItemList;
+  MainThemeBloc({
+    this.getMainThemesList,
+    this.getMainThemesItemList,
+  })  : assert(getMainThemesItemList != null),
+        assert(getMainThemesList != null),
+        super(EmptyMainTheme());
 
   MainThemeState get initialState => EmptyMainTheme();
+
   Stream<MainThemeState> _eitherLoadedOrErrorState(
-    Either<Failure, List<MainThemes>> failureOrAvailableOrderList,
+    Either<Failure, List<MainThemes>> failureOrMainTheme,
   ) async* {
-    yield failureOrAvailableOrderList.fold(
+    yield failureOrMainTheme.fold(
       (failure) => ErrorState(),
       (mainThemeList) => LoadedStateMainTheme(mainThemeList: mainThemeList),
+    );
+  }
+
+  Stream<MainThemeState> _eitherCategoriesOrErrorState(
+    Either<Failure, List<MainThemesItem>> failureOrCategories,
+  ) async* {
+    yield failureOrCategories.fold(
+      (failure) => ErrorState(),
+      (categories) => LoadedCategories(categoriesList: categories),
     );
   }
 
@@ -35,6 +54,10 @@ class MainThemeBloc extends Bloc<MainThemeEvent, MainThemeState> {
       final Either<Failure, List<MainThemes>> apiOutputEither =
           await getMainThemesList(NoParams());
       yield* _eitherLoadedOrErrorState(apiOutputEither);
+    } else if (event is GetCategoriesList) {
+      final Either<Failure, List<MainThemesItem>> apiOutputEither =
+          await getMainThemesItemList(StrParams(string: event.url));
+      yield* _eitherCategoriesOrErrorState(apiOutputEither);
     }
   }
 }

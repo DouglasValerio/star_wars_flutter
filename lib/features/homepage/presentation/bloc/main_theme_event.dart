@@ -8,3 +8,10 @@ abstract class MainThemeEvent extends Equatable {
 }
 
 class GetMainThemes extends MainThemeEvent {}
+
+class GetCategoriesList extends MainThemeEvent {
+  final String url;
+  const GetCategoriesList({
+    this.url,
+  });
+}
