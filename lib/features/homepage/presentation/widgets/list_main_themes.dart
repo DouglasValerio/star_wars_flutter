@@ -44,7 +44,10 @@ class _ListMainThemesState extends State<ListMainThemes> {
                       CupertinoPageRoute(
                           builder: (context) =>
                               BlocProvider<MainThemeBloc>.value(
-                                  value: mainBloc, child: CategoriesPage())),
+                                  value: mainBloc,
+                                  child: CategoriesPage(
+                                    title: state.mainThemeList[index].theme,
+                                  ))),
                     );
                   },
                   child: ListTile(
@@ -76,7 +79,7 @@ class _ListMainThemesState extends State<ListMainThemes> {
                   height: 30,
                 ),
                 Text(
-                  'Erro ao se conectar com a internet\n Verifique sua conexão \nou tente mais tarde.',
+                  'Looks like your internet connection is unstable\n Check your network status \nYou can also try again later',
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -96,7 +99,7 @@ class _ListMainThemesState extends State<ListMainThemes> {
                       ),
                     ),
                     child: Center(
-                      child: Text('Tentar novamante',
+                      child: Text('Try again',
                           style: TextStyle(color: Colors.white)),
                     ),
                   ),
