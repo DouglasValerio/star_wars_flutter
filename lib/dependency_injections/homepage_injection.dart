@@ -1,4 +1,5 @@
 import '../features/homepage/data/repositories/main_themes_repository_impl.dart';
+import '../features/homepage/data/sources/main_themes_local_data_source.dart';
 import '../features/homepage/data/sources/main_themes_remote_data_source.dart';
 import '../features/homepage/domain/repositories/main_themes_repository.dart';
 import '../features/homepage/domain/usecases/get_main_themes_list.dart';
@@ -15,9 +16,14 @@ Future<void> homepageInjection() async {
   serviceLocator.registerLazySingleton(
     () => GetMainThemesList(serviceLocator()),
   );
-  serviceLocator.registerLazySingleton<MainThemesRepository>(
-      () => MainThemesRepositoryImpl(remoteDataSource: serviceLocator()));
+  serviceLocator.registerLazySingleton<MainThemesRepository>(() =>
+      MainThemesRepositoryImpl(
+          remoteDataSource: serviceLocator(),
+          localDataSource: serviceLocator()));
   serviceLocator.registerLazySingleton<MainThemesRemoteDataSource>(
     () => MainThemesRemoteDataSourceImpl(httpClient: serviceLocator()),
+  );
+  serviceLocator.registerLazySingleton<MainThemesLocalDataSource>(
+    () => MainThemesLocalDataSourceImpl(flutterSecureStorage: serviceLocator()),
   );
 }

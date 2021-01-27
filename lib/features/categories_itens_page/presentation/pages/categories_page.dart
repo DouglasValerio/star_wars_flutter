@@ -16,6 +16,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
             icon: Icon(Icons.chevron_left_rounded),
             onPressed: () {
               Navigator.pop(context);
+              BlocProvider.of<MainThemeBloc>(context).add(GetMainThemes());
             },
           ),
           title: Text(

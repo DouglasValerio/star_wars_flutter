@@ -5,4 +5,4 @@ class ApiException implements Exception {
   ApiException(this.errorMessage, this.statusCode);
 }
 
-
+class CacheException implements Exception {}
