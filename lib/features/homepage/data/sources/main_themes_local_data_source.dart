@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:star_wars_flutter/core/error/exceptions.dart';
+import '../../../../core/error/exceptions.dart';
 
 import '../models/main_themes_model.dart';
 

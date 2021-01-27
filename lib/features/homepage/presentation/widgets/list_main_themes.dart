@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:star_wars_flutter/features/categories_itens_page/presentation/bloc/main_theme_item_bloc.dart';
-import 'package:star_wars_flutter/features/categories_itens_page/presentation/pages/categories_page.dart';
-import '../../../../injection_container.dart';
+
+import '../../../categories_itens_page/presentation/pages/categories_page.dart';
 import '../bloc/main_theme_bloc.dart';
 
 class ListMainThemes extends StatefulWidget {
