@@ -4,11 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:star_wars_flutter/features/categories_itens_page/domain/entities/main_themes_item.dart';
-import 'package:star_wars_flutter/features/categories_itens_page/domain/usecases/get_main_themes_item_list.dart';
-
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
+import '../../../categories_itens_page/domain/entities/main_themes_item.dart';
+import '../../../categories_itens_page/domain/usecases/get_main_themes_item_list.dart';
 import '../../domain/entities/main_themes.dart';
 import '../../domain/usecases/get_main_themes_list.dart';
 
